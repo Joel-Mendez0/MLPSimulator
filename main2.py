@@ -1,30 +1,22 @@
 import numpy as np
 
-def create_nn(n_inputs, n_hidden_neurons, n_outputs):
+def create_nn(n_inputs, hidden_layers, n_outputs):
     """
-    Create a neural network with specified number of input neurons, hidden neurons, and output neurons.
+    Create a neural network with specified number of input neurons, multiple hidden layers, and output neurons.
     Initialize the weights randomly.
 
     :param n_inputs: Number of input neurons
-    :param n_hidden_neurons: Number of hidden neurons
+    :param hidden_layers: List containing the number of neurons in each hidden layer
     :param n_outputs: Number of output neurons
     :return: Dictionary representing the neural network with weights and architecture
     """
-    # Calculate the total size of the weights array
-    wsize = (n_inputs + 1) * n_hidden_neurons + n_hidden_neurons * n_outputs  # +1 for bias
+    layers = [n_inputs] + hidden_layers + [n_outputs]
+    weights = {}
 
-    # Initialize weights randomly
-    weights = np.random.rand(wsize) - 0.5
+    for i in range(len(layers) - 1):
+        weights[f'W{i+1}'] = np.random.randn(layers[i], layers[i+1]) * 0.01
 
-    # Constructing the neural network as a dictionary
-    net = {
-        'w': weights,
-        'ni': n_inputs,
-        'nh': n_hidden_neurons,
-        'no': n_outputs
-    }
-
-    return net
+    return weights
 
 # Example usage
 # net = create_nn(5, 10, 3)

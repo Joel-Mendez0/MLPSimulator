@@ -115,7 +115,6 @@ scipy.io.savemat('learning_set.mat', {'learning_set': learning_set})
 # Load data from MLP_5 as the test set
 test_set = scipy.io.loadmat('MLP_5.mat')['MLP_5']
 
-
 # Save the test set to a new MATLAB file
 scipy.io.savemat('test_set.mat', {'test_set': test_set})
 
@@ -128,7 +127,7 @@ error_limit = 0.1
 iterations_limit = 100
 output_flag = 10
 
-layer_sizes = [4, 2, 6, 100, 3]
+layer_sizes = [4, 6, 3]
 
 #netw, iteration, RMSE = learning_ml_pk_out(learning_set, nhiddenneurons, noutputs, error_limit, iterations_limit, output_flag)
 #classif_rate = testing_ml_pk_out(test_set, nhiddenneurons, noutputs, netw)

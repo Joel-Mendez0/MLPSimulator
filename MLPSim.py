@@ -117,10 +117,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
 
 def generate_iris_dataset():
-    """
-    Generate a compatible Iris dataset for the demo_mlp_k_iris function.
-    The dataset will be split into training and testing datasets.
-    """
     # Load the Iris dataset
     iris = datasets.load_iris()
     X = iris.data  # Input features

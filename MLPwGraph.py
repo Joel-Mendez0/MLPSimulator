@@ -48,15 +48,16 @@ def eval_nn(inputs, weights):
 def learning_ml_pk_out(input_data, layer_sizes, error_limit, iterations_limit, output_flag):
     N, nfeatures = input_data.shape
     ninputs = nfeatures - layer_sizes[-1]  # Number of input features minus number of output neurons
-    
+
     inputs = input_data[:, :ninputs]
     targets = input_data[:, ninputs:]
 
     weights = create_nn(layer_sizes)
-    
+
     RMSE = float('inf')
     iteration = 0
-    
+    errors = []  # Store errors for plotting
+
     while iteration < iterations_limit and RMSE > error_limit:
         iteration += 1
         total_error = 0
@@ -65,11 +66,21 @@ def learning_ml_pk_out(input_data, layer_sizes, error_limit, iterations_limit, o
             output = eval_nn(inputs[j, :], weights)
             weights = backprop(weights, inputs[j, :], targets[j, :], layer_sizes)
             total_error += np.sum((output - targets[j, :]) ** 2)
-        
+
         RMSE = np.sqrt(total_error / (N * layer_sizes[-1]))
+        errors.append(RMSE)  # Store the error for plotting
 
         if iteration % output_flag == 0:
             print(f'Iteration {iteration}, Error {RMSE}')
+
+    # Plot learning curve
+    plt.figure(figsize=(8, 6))
+    plt.plot(range(1, iteration + 1), errors, marker='o')
+    plt.xlabel('Iteration')
+    plt.ylabel('Root Mean Squared Error')
+    plt.title('Learning Curve')
+    plt.grid(True)
+    plt.show()
 
     return weights, iteration, RMSE
 
@@ -150,7 +161,7 @@ error_limit = 0.1
 iterations_limit = 100
 output_flag = 10
 
-layer_sizes = [4, 4, 100, 232, 3]
+layer_sizes = [4,4,32,3]
 
 
 weights, iteration, RMSE = learning_ml_pk_out(learning_set, layer_sizes, error_limit, iterations_limit, output_flag)

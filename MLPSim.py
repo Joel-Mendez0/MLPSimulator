@@ -115,25 +115,6 @@ def testing_ml_pk_out(input_data, weights, layer_sizes):
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
-
-def generate_iris_dataset():
-    # Load the Iris dataset
-    iris = datasets.load_iris()
-    X = iris.data  # Input features
-    y = iris.target  # Class labels
-
-    # One-hot encoding of the class labels
-    encoder = OneHotEncoder(sparse=False)
-    y_encoded = encoder.fit_transform(y.reshape(-1, 1))
-
-    # Splitting the dataset into training and testing sets
-    X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.3, random_state=42)
-
-    # Combine inputs and outputs to match the expected format
-    training_data = np.hstack((X_train, y_train))
-    testing_data = np.hstack((X_test, y_test))
-
-    return training_data, testing_data
 import scipy.io
 
 # Load data from MLP_1 to MLP_4
@@ -170,12 +151,6 @@ layer_sizes = [4, 2, 6, 100, 3]
 
 #netw, iteration, RMSE = learning_ml_pk_out(learning_set, nhiddenneurons, noutputs, error_limit, iterations_limit, output_flag)
 #classif_rate = testing_ml_pk_out(test_set, nhiddenneurons, noutputs, netw)
-
-# Generating the Iris dataset
-learning_data, test_data = generate_iris_dataset()
-
-# Displaying a small part of the generated dataset for verification
-learning_data[:5], test_data[:5]
 
 weights, iteration, RMSE = learning_ml_pk_out(learning_set, layer_sizes, error_limit, iterations_limit, output_flag)
 classif_rate = testing_ml_pk_out(test_set, weights, layer_sizes)

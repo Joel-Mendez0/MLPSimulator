@@ -181,5 +181,5 @@ learning_data, test_data = generate_iris_dataset()
 # Displaying a small part of the generated dataset for verification
 learning_data[:5], test_data[:5]
 
-weights, iteration, RMSE = learning_ml_pk_out(learning_data, layer_sizes, error_limit, iterations_limit, output_flag)
+weights, iteration, RMSE = learning_ml_pk_out(learning_set, layer_sizes, error_limit, iterations_limit, output_flag)
 classif_rate = testing_ml_pk_out(test_set, weights, layer_sizes)

@@ -72,25 +72,6 @@ def learning_ml_pk_out(input_data, layer_sizes, error_limit, iterations_limit, o
 
     return weights, iteration, RMSE
 
-def reassignment(input_data, noutputs):
-    N, m = input_data.shape
-    class_labels = input_data[:, m - 1]
-    
-    input_data = input_data[:, :-1]
-    desired_outputs = np.zeros((N, noutputs))
-    
-    for i in range(N):
-        if class_labels[i] == 0:
-            desired_outputs[i, :] = [1, -1, -1]
-        elif class_labels[i] == 1:
-            desired_outputs[i, :] = [-1, 1, -1]
-        elif class_labels[i] == 2:
-            desired_outputs[i, :] = [-1, -1, 1]
-    
-    input_data = np.hstack((input_data, desired_outputs))
-    
-    return input_data
-
 def testing_ml_pk_out(input_data, weights, layer_sizes):
     ninputs = layer_sizes[0]
     N = input_data.shape[0]

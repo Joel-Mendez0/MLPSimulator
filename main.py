@@ -154,6 +154,7 @@ error_limit = 0.1
 iterations_limit = 100
 output_flag = 10
 
+# Only change the middle indices corresponding to number of neurons in the hidden layers. Can add as many layers as you like
 layer_sizes = [4,4,32,3]
 
 

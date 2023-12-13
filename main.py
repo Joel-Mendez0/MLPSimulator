@@ -82,8 +82,6 @@ def train_nn(training_data, neural_layers, limit_error, limit_iterations, flag_o
 
     return network_weights, current_iteration, RMSE
 
-# Remaining code for loading data and example usage remains unchanged
-
 def reassignment(input_data, noutputs):
     N, m = input_data.shape
     class_labels = input_data[:, m - 1]
@@ -152,11 +150,6 @@ test_set = scipy.io.loadmat('MLP_5.mat')['MLP_5']
 # Save the test set to a new MATLAB file
 scipy.io.savemat('test_set.mat', {'test_set': test_set})
 
-# Example usage:
-# Load your data here and preprocess it as needed
-# Then, call the functions accordingly
-
-# For example:
 error_limit = 0.1
 iterations_limit = 100
 output_flag = 10

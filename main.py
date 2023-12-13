@@ -165,4 +165,4 @@ layer_sizes = [4,4,32,3]
 
 
 weights, iteration, RMSE = train_nn(learning_set, layer_sizes, error_limit, iterations_limit, output_flag)
-classif_rate = Evaluate_Model_Performance(test_set, weights, layer_sizes)
+classif_rate = evaluate_model_performance(test_set, weights, layer_sizes)

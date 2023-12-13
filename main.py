@@ -164,5 +164,5 @@ output_flag = 10
 layer_sizes = [4,4,32,3]
 
 
-weights, iteration, RMSE = learning_ml_pk_out(learning_set, layer_sizes, error_limit, iterations_limit, output_flag)
-classif_rate = testing_ml_pk_out(test_set, weights, layer_sizes)
+weights, iteration, RMSE = train_nn(learning_set, layer_sizes, error_limit, iterations_limit, output_flag)
+classif_rate = Evaluate_Model_Performance(test_set, weights, layer_sizes)

@@ -1,17 +1,6 @@
 # Multi-Layer Perceptron (MLP) Project
 This project implements a Multi-Layer Perceptron (MLP) neural network with support for multiple hidden layers and output neurons. The neural network is trained using the backpropagation algorithm. The code includes functions for network initialization, forward pass, backward pass, training, and evaluation.
 
-Requirements
-numpy
-matplotlib
-scipy
-Usage
-python
-Copy code
-import numpy as np
-import matplotlib.pyplot as plt
-import scipy.io
-
 # Define the MLP project functions
 
 # Load data from MLP_1 to MLP_4
